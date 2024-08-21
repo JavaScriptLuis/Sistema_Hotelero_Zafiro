@@ -44,19 +44,13 @@ class StoreClienteRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        $errors = $validator->errors();
         $response = response()->json([
             'success' => false,
             'message' => 'Errores de validación',
-            'data' => [
-                'nombre' => $errors->first('nombre'),
-                'paterno' => $errors->first('paterno'),
-                'materno' => $errors->first('materno'),
-                'cedula' => $errors->first('cedula'),
-                'telefono' => $errors->first('telefono'),
-            ]
+            'errors' => $validator->errors()->messages()  // Asegura devolver todos los mensajes de error.
         ], 422);
 
         throw new HttpResponseException($response);
     }
+
 }

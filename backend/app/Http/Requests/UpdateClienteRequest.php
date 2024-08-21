@@ -27,6 +27,7 @@ class UpdateClienteRequest extends FormRequest
          'materno' => 'required',
          'cedula' => 'required',
          'telefono' => 'required',
+         'nit' => 'required',
         ];
     }
 

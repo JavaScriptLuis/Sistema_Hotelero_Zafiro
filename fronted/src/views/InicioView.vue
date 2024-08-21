@@ -75,8 +75,10 @@ const getFullName = (item) => {
 };
 
 const formatDate = (date) => {
-    return new Date(date).toLocaleDateString();
+    const dateObj = new Date(date);
+    return new Date(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate()).toLocaleDateString();
 };
+
 
 onMounted(async () => {
     loading.value = true;

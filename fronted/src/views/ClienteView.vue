@@ -212,14 +212,17 @@ const actionButton = async () => {
         getClientes();
     } catch (error) {
         loading.value = false;
-        if (error.response) {
-            erros.nombre = error.response.data.data.nombre_sucursal;
-            erros.direccion = error.response.data.data.direccion;
+        if (error.response && error.response.data && error.response.data.errors) {
+            // Asumimos que los errores vienen en la estructura { errors: { nombre: ['Mensaje de error'] } }
+            Object.keys(error.response.data.errors).forEach(key => {
+                erros[key] = error.response.data.errors[key][0];
+            });
         }
     } finally {
         loading.value = false;
     }
 }
+
 
 const desactivar = async (id) => {
     const result = await showAlertConfirmation(
@@ -257,12 +260,23 @@ const closeDialog = () => {
 }
 const limpiarDialog = () => {
     form.id = '';
-    form.direccion = '';
-    form.nombre_sucursal = '';
-    erros.direccion = '';
+    form.nombre = '';
+    form.paterno = '';
+    form.materno = '';
+    form.cedula = '';
+    form.telefono = '';
+    form.nit = '';
+    form.placa_vehiculo = '';
+    // Limpiar errores
     erros.nombre = '';
+    erros.paterno = '';
+    erros.materno = '';
+    erros.cedula = '';
+    erros.telefono = '';
+    erros.nit = '';
     loading.value = false;
 }
+
 
 onMounted(() => {
     getClientes();

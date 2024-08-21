@@ -39,7 +39,8 @@ class ClienteController extends Controller
                 'paterno' => $request->paterno,
                 'materno' => $request->materno,
                 'cedula' => $request->cedula,
-                'telefono' => $request->telefono
+                'telefono' => $request->telefono,
+                'nit' => $request->nit
             ]);
 
             if ($request->has('placa_vehiculo')) {
@@ -80,7 +81,8 @@ class ClienteController extends Controller
                 'paterno' => $request->paterno,
                 'materno' => $request->materno,
                 'cedula' => $request->cedula,
-                'telefono' => $request->telefono
+                'telefono' => $request->telefono,
+                'nit' => $request->nit
             ]);
 
             if ($request->has('placa_vehiculo')) {

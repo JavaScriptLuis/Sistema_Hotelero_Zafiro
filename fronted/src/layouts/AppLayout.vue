@@ -121,7 +121,7 @@ const filteredSubMenuConf = computed(() => filterRoutesByRole(subMenuConf.value)
 const filteredSubMenuReportes = computed(() => filterRoutesByRole(subMenuReportes.value));
 const routes = ref([
     { text: 'Inicio', icon: 'mdi-home', route: '/inicio', roles: ['admin', 'recep'] },
-    { text: 'Personal', icon: 'mdi-account', route: '/personales', roles: ['admin',] },
+    { text: 'Personal', icon: 'mdi-account', route: '/personales', roles: ['admin'] },
     { text: 'Reserva', icon: 'mdi-calendar-check', route: '/reservas', roles: ['admin', 'recep'] },
     { text: 'Recepción', icon: 'mdi-desk', route: '/recepcion', roles: ['admin', 'recep'] },
     { text: 'Verificación de salidas', icon: 'mdi-exit-to-app', route: '/salidas', roles: ['admin', 'recep'] },

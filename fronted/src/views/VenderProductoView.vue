@@ -239,6 +239,7 @@ const dialogProductos = ref(false);
 const statePay = ref();
 const loadingVenta = ref(false);
 const errors = reactive({});
+const searchProductos = ref('');
 const tiposPagos = [
     { value: 'efectivo', text: 'Efectivo' },
     { value: 'tarjeta', text: 'Tarjeta' },
