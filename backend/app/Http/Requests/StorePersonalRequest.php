@@ -45,6 +45,7 @@ class StorePersonalRequest extends FormRequest
             'cedula.required' => 'La campo cédula es obligatoria',
             'telefono.required' => 'El campo teléfono es obligatorio',
             'email.required' => 'El campo email es obligatorio',
+            'rol.required' => 'El campo rol es obligatorio',
             'email.unique' => 'El email ya se encuentra registrado en el sistema',
         ];
     }
