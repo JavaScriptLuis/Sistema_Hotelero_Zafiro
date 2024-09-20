@@ -93,6 +93,12 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('@/views/auth/LoginView.vue')
+    },
+    {
+      path: '/informacion',
+      name: 'informacion',
+      component: () => import('@/views/informacionView.vue'), // Cambiar a InformacionView.vue
+      meta: { requiresAuth: true, roles: ['admin', 'recep'] }
     }
   ]
 })

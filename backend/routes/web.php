@@ -1,6 +1,10 @@
+archivo web.php
+
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use  Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Ruta para la vista de productos (puedes ajustarla a tu necesidad)
 Route::get('/products', function () {
     return view('welcome');
+});
+
+// Ruta para descargar el archivo PDF
+Route::get('/manual-usuario', function () {
+    // Definir la ruta completa del archivo PDF
+    $path = storage_path('app/public/MANUAL_DE_USUARIO_SISTEMA_ZAFIRO.pdf');
+    
+    // Verificar si el archivo existe antes de intentar descargarlo
+    if (file_exists($path)) {
+        return response()->download($path); // Descargar el archivo si existe
+    } else {
+        abort(404, 'Archivo no encontrado.'); // Mostrar error si no se encuentra
+    }
 });

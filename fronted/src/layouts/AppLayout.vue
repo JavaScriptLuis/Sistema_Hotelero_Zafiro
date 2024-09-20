@@ -1,12 +1,18 @@
 <template>
     <v-layout>
         <v-app-bar class="custom-app-bar" elevation="4">
-            <v-app-bar-nav-icon @click.stop="toggleDrawer" color="white"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click.stop="toggleDrawer" color="black"></v-app-bar-nav-icon>
             <v-toolbar-title color="white" class="text-h5 font-weight-bold">
                 Bienvenido {{ authStore.personal.nombre }} {{ authStore.personal.paterno }} {{ authStore.personal.materno }}
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn @click="cerrarSesion" class="mr-6" icon color="white">
+
+            <!-- Botón de información -->
+        <v-btn @click="goToInfo" class="mr-4" icon color="white">
+          <v-icon>mdi-information</v-icon> <!-- Ícono de información -->
+        </v-btn>
+
+            <v-btn @click="cerrarSesion" class="mr-6" icon color="black" style="font-weight: bold;">
                 Salir
             </v-btn>
         </v-app-bar>
@@ -39,8 +45,9 @@
 
                 <v-list-group value="Punto de venta">
                     <template v-slot:activator="{ props }">
-                        <v-list-item v-bind="props" prepend-icon="mdi-cash-register"
-                            title="Punto de venta"></v-list-item>
+                        <v-list-item v-bind="props" prepend-icon="mdi-cash-register">
+                            <v-list-item-title style="font-size: 16px;">Punto de Venta</v-list-item-title>
+                        </v-list-item>
                     </template>
                     <v-list-item v-for="(item, i) in filteredSubMenu" :key="i" :to="item.route"
                         active-class="active-sub-item" class="sub-menu-item">
@@ -50,10 +57,12 @@
                         <v-list-item-title class="text-wrap">{{ item.text }}</v-list-item-title>
                     </v-list-item>
                 </v-list-group>
+
                 <v-list-group value="Configuracion">
                     <template v-slot:activator="{ props }">
-                        <v-list-item v-bind="props" prepend-icon="mdi-cash-register"
-                            title="Configuracion"></v-list-item>
+                        <v-list-item v-bind="props" prepend-icon="mdi-cog">
+                            <v-list-item-title style="font-size: 16px;">Configuración</v-list-item-title>
+                        </v-list-item>
                     </template>
                     <v-list-item v-for="(item, i) in filteredSubMenuConf" :key="i" :to="item.route"
                         active-class="active-sub-item" class="sub-menu-item">
@@ -63,9 +72,12 @@
                         <v-list-item-title class="text-wrap">{{ item.text }}</v-list-item-title>
                     </v-list-item>
                 </v-list-group>
+
                 <v-list-group value="Reportes">
                     <template v-slot:activator="{ props }">
-                        <v-list-item v-bind="props" prepend-icon="mdi-cash-register" title="Reportes"></v-list-item>
+                        <v-list-item v-bind="props" prepend-icon="mdi-chart-box">
+                            <v-list-item-title style="font-size: 16px;">Reportes</v-list-item-title>
+                        </v-list-item>
                     </template>
                     <v-list-item v-for="(item, i) in filteredSubMenuReportes" :key="i" :to="item.route"
                         active-class="active-sub-item" class="sub-menu-item">
@@ -75,6 +87,7 @@
                         <v-list-item-title class="text-wrap">{{ item.text }}</v-list-item-title>
                     </v-list-item>
                 </v-list-group>
+
             </v-list>
         </v-navigation-drawer>
 
@@ -95,6 +108,16 @@ import { ref, computed } from 'vue';
 import useAuth from '@/services/useAuth';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useServerStore } from '@/stores/useService';
+import router from '@/router';
+import { useRouter } from 'vue-router';
+
+
+
+// Función para redirigir a la vista de información
+const goToInfo = () => {
+    router.push({ name: 'informacion' }); // Redirigir a la vista información
+  };
+
 const authStore = useAuthStore();
 const userRole = ref(authStore.userRole);
 const serve = useServerStore();
@@ -153,11 +176,11 @@ const detalleURL = (archivo) => {
 
 <style scoped>
 .custom-app-bar {
-    background: linear-gradient(to right, #4d01ff, #d000ff);
+    background: linear-gradient(to right, #d9d9d9, #0059ff);
 }
 
 .custom-drawer {
-    background: linear-gradient(to bottom, #4d01ff, #d000ff);
+    background: linear-gradient(to bottom, #d9d9d9,#0059ff);
 }
 
 .drawer-header {
@@ -211,5 +234,13 @@ const detalleURL = (archivo) => {
 .text-wrap {
     white-space: normal;
     word-break: break-word;
+}
+.custom-drawer .v-list-item-title {
+    font-size: 16px; /* Cambia este valor al tamaño que prefieras */
+    
+}
+.custom-drawer .sub-menu-item .v-list-item-title {
+    font-size: 16px; /* Cambia este valor al tamaño que prefieras */
+ 
 }
 </style>

@@ -271,7 +271,7 @@ onMounted(() => {
 }
 
 .custom-table>>>th {
-    background-color: #8478D3 !important;
+    background-color: #494949 !important;
     color: white !important;
     font-weight: bold;
     text-transform: uppercase;
@@ -282,6 +282,9 @@ onMounted(() => {
     border-bottom: 1px solid #e0e0e0;
     padding: 12px 16px;
     border: 1px solid #B4BBE8;
+    border-bottom: 1px solid black; /* Borde inferior de las celdas */
+    border-top: 1px solid black; /* Borde superior específico para cada celda */
+    border-right: 1px solid black; /* Borde derecho para cada celda */
 }
 
 .custom-table>>>tr:nth-child(even) {

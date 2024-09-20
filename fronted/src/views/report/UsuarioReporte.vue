@@ -295,8 +295,9 @@ watch([fechaInicial, fechaFinal], ([newFechaInicial, newFechaFinal]) => {
 }
 
 .v-data-table>>>th {
+    background-color: #494949 !important;
     font-weight: bold !important;
-    color: #1E88E5 !important;
+    color: #ffffff !important;
     font-size: 0.95rem !important;
 }
 
@@ -310,7 +311,7 @@ watch([fechaInicial, fechaFinal], ([newFechaInicial, newFechaFinal]) => {
 
 .v-card-title {
     font-size: 1.5rem !important;
-    background: linear-gradient(45deg, #8478D3, #5549C5);
+    background: linear-gradient(45deg, #494949, #494949);
     color: white;
 }
 </style>

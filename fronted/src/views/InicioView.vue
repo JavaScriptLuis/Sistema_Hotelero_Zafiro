@@ -126,8 +126,8 @@ h1 {
     box-shadow: 0 4px 25px 0 rgba(0, 0, 0, .1);
 }
 
-
 .opacity-6 {
     opacity: 0.6;
 }
+
 </style>

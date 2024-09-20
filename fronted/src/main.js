@@ -14,7 +14,8 @@ import '@mdi/font/css/materialdesignicons.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-
+// main.js o App.vue
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const app = createApp(App)
 const vuetify = createVuetify({
